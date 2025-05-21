@@ -4,12 +4,13 @@ import Homepage from "./pages/Homepage";
 import ListMovies from "./pages/ListMovies";
 import ListBooks from "./pages/ListBooks";
 import ListAlbum from "./pages/ListAlbum";
+import { GlobalProvider } from "./context/globalContext"
 
-function App() {
-
+export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
+    <GlobalProvider>
+      <BrowserRouter>
+        <Routes>
           <Route Component={DefaultLayout}>
             <Route path="/" Component={Homepage} />
             <Route path="/cinemas" Component={ListMovies} />
@@ -17,8 +18,8 @@ function App() {
             <Route path="/albums" Component={ListAlbum} />
           </Route>
         </Routes>
-    </BrowserRouter>
+      </BrowserRouter>
+    </GlobalProvider>
+
   )
 }
-
-export default App

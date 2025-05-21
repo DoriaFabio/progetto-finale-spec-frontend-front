@@ -7,7 +7,7 @@ Una SPA in React che simula l’esperienza di un utente non autenticato, che pu�
 
 # 🏆 Requisiti Minimi
 Per considerare il progetto completo, devono essere implementate almeno queste funzionalità:
-  - Gestione di una risorsa definita in types.ts
+  <!--todo - Gestione di una risorsa definita in types.ts -->
   - Lista dei record, che mostra solo le proprietà principali title e category, e include:
       - Barra di ricerca per cercare nei titoli (title)
       - Filtro per categoria (category)
