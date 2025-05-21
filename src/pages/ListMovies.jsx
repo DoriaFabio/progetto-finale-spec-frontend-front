@@ -1,5 +1,6 @@
 import { GlobalContext } from "../context/globalContext"
-import { useState, useContext } from "react"
+import { useContext } from "react"
+import TableRow from "../components/TableRow";
 
 export default function ListMovies() {
   const { cinemas } = useContext(GlobalContext);
@@ -15,12 +16,9 @@ export default function ListMovies() {
           </tr>
         </thead>
         <tbody>
-          {cinemas && cinemas.map((movie, index) => (
-            <tr key={index}>
-              <td className="border py-1 px-2">{movie.title}</td>
-              <td className="border py-1 px-2">{movie.category}</td>
-            </tr>
-          ))}
+          {cinemas.length > 0 ? cinemas.map((movie, index) => (
+            <TableRow key={index} data={movie} />
+          )) : <tr><td colSpan="3">Nessun film</td></tr>}
         </tbody>
       </table>
     </div>

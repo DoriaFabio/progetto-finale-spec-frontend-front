@@ -1,5 +1,6 @@
 import { GlobalContext } from "../context/globalContext"
-import { useState, useContext } from "react"
+import { useContext } from "react"
+import TableRow from "../components/TableRow";
 
 export default function ListAlbum() {
   const { albums } = useContext(GlobalContext);
@@ -15,12 +16,9 @@ export default function ListAlbum() {
           </tr>
         </thead>
         <tbody>
-          {albums && albums.map((music, index) => (
-            <tr key={index}>
-              <td className="border py-1 px-2">{music.title}</td>
-              <td className="border py-1 px-2">{music.category}</td>
-            </tr>
-          ))}
+          {albums.length > 0 ? albums.map((music, index) => (
+            <TableRow key={index} data={music}/>
+          )) : <tr><td colSpan="3">Nessun album</td></tr>}
         </tbody>
       </table>
     </div>
