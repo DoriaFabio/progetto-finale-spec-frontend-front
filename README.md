@@ -9,7 +9,7 @@ Una SPA in React che simula l’esperienza di un utente non autenticato, che pu�
 Per considerare il progetto completo, devono essere implementate almeno queste funzionalità:
   <!--todo - Gestione di una risorsa definita in types.ts -->
   <!--todo - Lista dei record, che mostra solo le proprietà principali title e category, e include: -->
-      - Barra di ricerca per cercare nei titoli (title)
+  <!--todo - Barra di ricerca per cercare nei titoli (title) -->
       - Filtro per categoria (category)
       - Ordinamento alfabetico per title o category (A-Z e Z-A)
   - Pagina di dettaglio per ogni record, con visualizzazione estesa delle sue proprietà (es. price, description, brand, ecc.)
