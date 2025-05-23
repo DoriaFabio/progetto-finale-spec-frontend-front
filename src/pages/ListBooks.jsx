@@ -23,8 +23,8 @@ export default function ListBooks() {
           </tr>
         </thead>
         <tbody>
-          {filteredBook.length > 0 ? filteredBook.map((book, index) => (
-            <TableRow key={index} data={book}/>
+          {filteredBook.length > 0 ? filteredBook.map((book) => (
+            <TableRow key={book.id} data={book} path="books"/>
           )) : <tr><td colSpan="3">Nessun libro</td></tr>}
         </tbody>
       </table>
