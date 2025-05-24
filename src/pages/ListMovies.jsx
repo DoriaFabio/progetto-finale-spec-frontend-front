@@ -23,8 +23,8 @@ export default function ListMovies() {
           </tr>
         </thead>
         <tbody>
-          {filteredMovies.length > 0 ? filteredMovies.map((movie, index) => (
-            <TableRow key={index} data={movie} />
+          {filteredMovies.length > 0 ? filteredMovies.map((movie) => (
+            <TableRow key={movie.id} data={movie} path="cinemas" />
           )) : <tr><td colSpan="3">Nessun film</td></tr>}
         </tbody>
       </table>

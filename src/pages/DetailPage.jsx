@@ -1,31 +1,84 @@
 import { useParams, useLocation } from "react-router-dom";
 import { fetchById } from "../hooks/useTasks";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 export default function DetailPage() {
     const { id } = useParams();
     const location = useLocation();
-    const pathParts = location.pathname.split("/");
-    const path = pathParts[1];
-    let contentType;
-    if (path.includes("cinemas")) contentType = "Movie";
-    else if (path.includes("books")) contentType = "Book";
-    else if (path.includes("albums")) contentType = "Album";
+    const path = location.pathname.split("/")[1];
+
+    const contentType = useMemo(() => {
+        if (path.includes("cinemas")) return "film";
+        if (path.includes("books")) return "libro";
+        if (path.includes("albums")) return "album";
+        return "Elemento";
+    }, [path]);
+
     const [data, setData] = useState(null);
 
     useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const result = await fetchById(path, id);
+                setData(result);
+            } catch (err) {
+                console.error(err);
+            }
+        };
         if (path && id) {
-            fetchById(path, id)
-                .then(setData)
-                .catch(err => console.error(err))
+            fetchData();
         }
     }, [path, id]);
 
+    const renderDetails = (path, data) => {
+        if (!data) return null;
+
+        switch (path) {
+            case "cinemas":
+                return (
+                    <>
+                        <p><strong>Titolo film: </strong>{data.title}</p>
+                        <p><strong>Categoria film: </strong>{data.category}</p>
+                        <p><strong>Regista: </strong>{data.directory}</p>
+                        <p><strong>Durata film: </strong>{data.durata} minuti</p>
+                        <p><strong>Genere: </strong>{data.genre}</p>
+                        <p><strong>Anno d`uscita: </strong>{data.release_year}</p>
+                        <p><strong>Valutazione: </strong>{data.rating}</p>
+                    </>
+                );
+            case "books":
+                return (
+                    <>
+                        <p><strong>Titolo libro: </strong>{data.title}</p>
+                        <p><strong>Categoria libro: </strong>{data.category}</p>
+                        <p><strong>Autore: </strong>{data.author}</p>
+                        <p><strong>N°pagine: </strong>{data.pages}</p>
+                        <p><strong>Genere: </strong>{data.genre}</p>
+                        <p><strong>Anno d`uscita: </strong>{data.release_year}</p>
+                        <p><strong>Valutazione: </strong>{data.rating}</p>
+                    </>
+                );
+            case "albums":
+                return (
+                    <>
+                        <p><strong>Titolo album: </strong>{data.title}</p>
+                        <p><strong>Categoria album: </strong>{data.category}</p>
+                        <p><strong>Artista: </strong>{data.artist}</p>
+                        <p><strong>N°Tracce: </strong>{data.n_tracks}</p>
+                        <p><strong>Genere: </strong>{data.genre}</p>
+                        <p><strong>Anno d`uscita: </strong>{data.release_year}</p>
+                        <p><strong>Valutazione: </strong>{data.rating}</p>
+                    </>
+                );
+            default:
+                return <p>Dati non disponibili</p>;
+        }
+    };
+
     return (
         <div className="p-4">
-            <h1 className="text-2xl font-bold mb-2">Dettagli {contentType}</h1>
-            <p>ID: {id}</p>
-            <p>{data?.title || "Nessun titolo trovato"}</p>
+            <h1 className="text-2xl font-bold mb-2">Dettaglio {contentType} {id}</h1>
+            {renderDetails(path, data)}
         </div>
     );
 }
