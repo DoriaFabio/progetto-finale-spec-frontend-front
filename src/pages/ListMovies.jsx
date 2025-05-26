@@ -3,16 +3,21 @@ import { useContext, useState, useMemo } from "react"
 import TableRow from "../components/TableRow";
 import Search from "../components/Search";
 import FilterCategory from "../components/filterCategory";
+import { HiSortAscending, HiSortDescending } from "react-icons/hi";
+import useSort from "../hooks/useSort";
 
 export default function ListMovies() {
   const { cinemas } = useContext(GlobalContext);
   console.log(cinemas);
   const [searchMovies, setSearchMovies] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
+  const { sortBy, sortOrder, handleOrder, filterSort } = useSort("title");
+  const sortIcon = sortOrder === 1 ? <HiSortAscending className="inline" /> : <HiSortDescending className="inline" />
+
   const filteredMovies = useMemo(() => {
     return [...cinemas].filter(m => m.title.toLowerCase().includes(searchMovies.toLowerCase()) &&
-      (selectedCategory === "" || selectedCategory === m.category));
-  }, [cinemas, searchMovies, selectedCategory]);
+      (selectedCategory === "" || selectedCategory === m.category)).sort(filterSort);
+  }, [cinemas, searchMovies, selectedCategory, filterSort]);
 
   return (
     <div className="my-5 flex flex-col items-center">
@@ -24,8 +29,8 @@ export default function ListMovies() {
       <table className="border my-2 shadow-2xl">
         <thead className="bg-green-800 text-white transition duration-500 ease-in-out">
           <tr>
-            <th className="border py-1 border-black cursor-pointer">Titolo</th>
-            <th className="border py-1 border-black px-3 cursor-pointer">Categoria</th>
+            <th className="border py-1 border-black cursor-pointer" onClick={() => handleOrder("title")}>Titolo {sortBy === "title" && sortIcon}</th>
+            <th className="border py-1 border-black px-3 cursor-pointer" onClick={() => handleOrder("category")}>Categoria {sortBy === "category" && sortIcon}</th>
           </tr>
         </thead>
         <tbody>
