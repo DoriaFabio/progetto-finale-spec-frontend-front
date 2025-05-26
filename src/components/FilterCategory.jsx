@@ -1,10 +1,12 @@
-export default function FilterCategory() {
+export default function FilterCategory({ data, onFilter }) {
+    const categories = [...new Set(data.map(c => c.category))];
+
     return (
-        <select className="border border-black p-2 h-fit">
-            <option value="category">1</option>
-            <option value="category1">1</option>
-            <option value="category2">1</option>
-            <option value="category3">1</option>
+        <select className="p-2 h-fit rounded-xl shadow-md shadow-gray-400" onChange={(e) => onFilter(e.target.value)}>
+            <option value="" default>Tutti</option>
+            {categories.map((c, i) => {
+                return <option value={c} key={i}>{c}</option>
+            })}
         </select>
     )
 }

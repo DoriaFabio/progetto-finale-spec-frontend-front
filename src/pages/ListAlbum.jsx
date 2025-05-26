@@ -8,18 +8,20 @@ export default function ListAlbum() {
   const { albums } = useContext(GlobalContext);
   console.log(albums);
   const [searchAlbum, setSearchAlbum] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
   const filteredAlbum = useMemo(() => {
-    return [...albums].filter(a => a.title.toLowerCase().includes(searchAlbum.toLowerCase()))
-  }, [albums, searchAlbum]);
+    return [...albums].filter(a => a.title.toLowerCase().includes(searchAlbum.toLowerCase()) &&
+      (selectedCategory === "" || a.category === selectedCategory))
+  }, [albums, searchAlbum, selectedCategory]);
 
   return (
     <div className="my-5 flex flex-col items-center">
       <h1 className="font-bold text-[30px] mb-5">Lista album</h1>
-      <div className="grid grid-cols-2 gap-5">
+      <div className="grid grid-cols-2 gap-5 mb-5">
         <Search onSearch={setSearchAlbum} />
-        <FilterCategory />
+        <FilterCategory data={albums} onFilter={setSelectedCategory}/>
       </div>
-      <table className="border my-2 shadow-2xl">
+      <table className="border shadow-2xl">
         <thead className="bg-green-800 text-white transition duration-500 ease-in-out">
           <tr>
             <th className="border py-1 border-black cursor-pointer">Titolo</th>
