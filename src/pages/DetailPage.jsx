@@ -30,7 +30,7 @@ export default function DetailPage() {
         }
     }, [path, id]);
 
-    const uniqueId = `${path}-${id}`;
+    const uniqueId = `${id}`;
     const storageKey = `favourites-${path}`;
 
     const [favourites, setFavourites] = useState(() => {
@@ -44,7 +44,7 @@ export default function DetailPage() {
         if (!favourites.includes(uniqueId)) {
             const updated = [...favourites, uniqueId];
             setFavourites(updated);
-            console.log(updated);
+            console.log(path + updated);
             localStorage.setItem(storageKey, JSON.stringify(updated));
             alert("Aggiunto ai preferiti!");
         } else {
