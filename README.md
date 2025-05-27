@@ -16,8 +16,7 @@ Per considerare il progetto completo, devono essere implementate almeno queste f
   - Comparatore di 2 record, visualizzati affiancati per confrontarne le caratteristiche. 
       - È libera la modalità di selezione: puoi permettere all’utente di aggiungere record al comparatore direttamente dalla lista, dalla pagina di dettaglio, oppure usare un menu a tendina, checkbox o qualsiasi altro sistema.
       L’importante è che l’utente possa scegliere 2 record qualsiasi e confrontarli in modo chiaro.
-  - Sistema di preferiti, sempre accessibile e aggiornabile:
-      - L’utente può aggiungere o rimuovere record dai preferiti in qualsiasi momento
+  <!--todo - Sistema di preferiti, sempre accessibile e aggiornabile in qualsiasi momento -->
   <!--todo - I preferiti devono essere consultabili in ogni sezione dell’app (es. tramite una sezione dedicata, un’icona fissa, o una sidebar) -->
 
 # 🔧 API disponibili
@@ -35,7 +34,7 @@ Ecco le API REST disponibili per ogni tipo di risorsa:
 Ogni risorsa viene salvata come file .json in /database.
 Esempio: se definisci Product, il backend creerà product.json.
 
-✅ Puoi inserire i dati:
+# ✅ Puoi inserire i dati:
     - Tramite API (fetch, Postman…)
     - Manualmente nei file .json (rispettando la forma del tipo)
-📌 Popola ogni risorsa con almeno 10 record validi, per avere materiale sufficiente da confrontare.
+# 📌 Popola ogni risorsa con almeno 10 record validi, per avere materiale sufficiente da confrontare.
