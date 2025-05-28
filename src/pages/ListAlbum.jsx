@@ -11,7 +11,8 @@ export default function ListAlbum() {
   console.log(albums);
   const [searchAlbum, setSearchAlbum] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
-  const {sortBy, sortOrder, handleOrder, filterSort} = useSort("title");
+  const {sortBy, sortOrder, handleOrder, filterSort} = useSort(null);
+  
   const sortIcon = sortOrder === 1 ? <HiSortDescending className="inline" /> : <HiSortAscending className="inline" />;
 
   const filteredAlbum = useMemo(() => {

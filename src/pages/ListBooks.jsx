@@ -11,7 +11,7 @@ export default function ListBooks() {
   console.log(books);
   const [searchBook, setSearchBook] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
-  const { sortBy, sortOrder, handleOrder, filterSort } = useSort("title");
+  const { sortBy, sortOrder, handleOrder, filterSort } = useSort(null);
   const sortIcon = sortOrder === 1 ? <HiSortDescending className="inline" /> : <HiSortAscending className="inline" />;
 
   const filteredBook = useMemo(() => {

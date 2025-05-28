@@ -13,9 +13,9 @@ Per considerare il progetto completo, devono essere implementate almeno queste f
   <!--todo - Filtro per categoria (category) -->
   <!--todo - Ordinamento alfabetico per title o category (A-Z e Z-A) -->
   <!--todo - Pagina di dettaglio per ogni record, con visualizzazione estesa delle sue proprietà (es. price, description, brand, ecc.) -->
-  - Comparatore di 2 record, visualizzati affiancati per confrontarne le caratteristiche. 
-      - È libera la modalità di selezione: puoi permettere all’utente di aggiungere record al comparatore direttamente dalla lista, dalla pagina di dettaglio, oppure usare un menu a tendina, checkbox o qualsiasi altro sistema.
-      L’importante è che l’utente possa scegliere 2 record qualsiasi e confrontarli in modo chiaro.
+  <!--todo - Comparatore di 2 record, visualizzati affiancati per confrontarne le caratteristiche.  -->
+  <!--todo - È libera la modalità di selezione: puoi permettere all’utente di aggiungere record al comparatore direttamente dalla lista, dalla pagina di dettaglio, oppure usare un menu a tendina, checkbox o qualsiasi altro sistema. -->
+  <!--todo L’importante è che l’utente possa scegliere 2 record qualsiasi e confrontarli in modo chiaro. -->
   <!--todo - Sistema di preferiti, sempre accessibile e aggiornabile in qualsiasi momento -->
   <!--todo - I preferiti devono essere consultabili in ogni sezione dell’app (es. tramite una sezione dedicata, un’icona fissa, o una sidebar) -->
 

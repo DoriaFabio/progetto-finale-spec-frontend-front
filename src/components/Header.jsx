@@ -16,7 +16,7 @@ export default function Header() {
             <NavLink to="/albums" className="sm:mx-3 hover:bg-emerald-900 p-3 rounded-xl text-[10px] sm:text-[16px]">
                 Lista album
             </NavLink>
-            <NavLink to="/comparator" className="sm:mx-3 hover:bg-emerald-900 p-3 rounded-xl text-[10px] sm:text-[16px]">
+            <NavLink to="/comparators" className="sm:mx-3 hover:bg-emerald-900 p-3 rounded-xl text-[10px] sm:text-[16px]">
                 Comparatore
             </NavLink>
         </header>

@@ -6,7 +6,7 @@ export default function DefaultLayout() {
     return (
         <>
             <Header />
-            <main className="relative">
+            <main>
                 <Sidebar />
                 <Outlet />
             </main>

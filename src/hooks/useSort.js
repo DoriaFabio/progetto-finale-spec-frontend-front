@@ -17,7 +17,7 @@ export default function useSort(order) {
         let compare;
         if (sortBy === "title") {
           compare = a.title.localeCompare(b.title);
-        } else {
+        } else if (sortBy === "category") {
           compare = a.category.localeCompare(b.category);
         }
         return compare * sortOrder;

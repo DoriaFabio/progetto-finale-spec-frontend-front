@@ -11,7 +11,7 @@ export default function ListMovies() {
   console.log(cinemas);
   const [searchMovies, setSearchMovies] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
-  const { sortBy, sortOrder, handleOrder, filterSort } = useSort("title");
+  const { sortBy, sortOrder, handleOrder, filterSort } = useSort(null);
   const sortIcon = sortOrder === 1 ? <HiSortAscending className="inline" /> : <HiSortDescending className="inline" />
 
   const filteredMovies = useMemo(() => {
