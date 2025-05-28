@@ -20,8 +20,8 @@ export default function ListAlbum() {
   }, [albums, searchAlbum, selectedCategory, filterSort]);
 
   return (
-    <div className="my-5 flex flex-col items-center">
-      <h1 className="font-bold text-[30px] mb-5">Lista album</h1>
+    <div className="flex flex-col items-center">
+      <h1 className="font-bold text-[30px] my-5">Lista album</h1>
       <div className="grid grid-cols-2 gap-5 mb-5">
         <Search onSearch={setSearchAlbum} />
         <FilterCategory data={albums} onFilter={setSelectedCategory} />

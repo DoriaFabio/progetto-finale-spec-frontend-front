@@ -20,8 +20,8 @@ export default function ListMovies() {
   }, [cinemas, searchMovies, selectedCategory, filterSort]);
 
   return (
-    <div className="my-5 flex flex-col items-center">
-      <h1 className="font-bold text-[30px] mb-5">Lista film</h1>
+    <div className="flex flex-col items-center">
+      <h1 className="font-bold text-[30px] my-5">Lista film</h1>
       <div className="grid grid-cols-2 gap-5 mb-5">
         <Search onSearch={setSearchMovies} />
         <FilterCategory data={cinemas} onFilter={setSelectedCategory} />

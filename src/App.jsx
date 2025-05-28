@@ -6,7 +6,6 @@ import ListBooks from "./pages/ListBooks";
 import ListAlbum from "./pages/ListAlbum";
 import { GlobalProvider } from "./context/globalContext"
 import DetailPage from "./pages/DetailPage";
-import Favourite from "./pages/Favourite";
 
 export default function App() {
   return (
@@ -21,7 +20,6 @@ export default function App() {
             <Route path="/cinemas/:id" Component={DetailPage} />
             <Route path="/books/:id" Component={DetailPage} />
             <Route path="/albums/:id" Component={DetailPage} />
-            <Route path="/favourite" Component={Favourite} />
           </Route>
         </Routes>
       </BrowserRouter>

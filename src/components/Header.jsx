@@ -1,10 +1,9 @@
 import { NavLink } from "react-router-dom"
 import { FaHouse } from "react-icons/fa6";
-import { FaHeart } from "react-icons/fa6";
 
 export default function Header() {
     return (
-        <header className='bg-emerald-800 text-white sm:p-5 p-3'>
+        <header className='bg-emerald-800 text-white h-15 flex justify-items-start items-center'>
             <NavLink to="/" className="sm:mx-3 hover:bg-emerald-900 p-3 rounded-xl text-[13px] sm:text-[16px]">
                 <FaHouse className="inline-block" />
             </NavLink>
@@ -16,9 +15,6 @@ export default function Header() {
             </NavLink>
             <NavLink to="/albums" className="sm:mx-3 hover:bg-emerald-900 p-3 rounded-xl text-[10px] sm:text-[16px]">
                 Lista album
-            </NavLink>
-            <NavLink to="/favourite" className="sm:mx-3 hover:bg-emerald-900 p-3 rounded-xl text-[13px] sm:text-[16px]">
-                <FaHeart className="inline-block" />
             </NavLink>
         </header>
     )
