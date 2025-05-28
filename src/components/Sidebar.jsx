@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchById } from '../hooks/useTasks';
+import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
     const [favouritesCinemas, setFavouritesCinemas] = useState([]);
@@ -31,13 +32,13 @@ export default function Sidebar() {
     }, []);
 
     return (
-        <div className="p-4 absolute top-0 right-0 bg-[#5b635d8a] h-[calc(100vh-60px)] w-[15%] shadow-[-15px_0px_26px_rgba(0,0,0,0.25)">
+        <div className="p-4 absolute top-0 right-0 bg-[#5b635d8a] h-[calc(100vh-60px)] w-[15%] shadow-[-15px_0px_26px_rgba(0,0,0,0.25)]">
             <h2 className="text-center font-bold text-base my-5">Film preferiti</h2>
             {favouritesCinemas.length > 0 ? (
                 <ul className="space-y-2">
                     {favouritesCinemas.map((movie) => (
                         <li key={movie.id} className="p-2 border rounded shadow overflow-ellipsis overflow-hidden text-nowrap">
-                            {movie.title} - {movie.directory}
+                            <Link to={`/cinemas/${movie.id}`}>{movie.title} - {movie.directory}</Link>
                         </li>
                     ))}
                 </ul>
@@ -49,7 +50,7 @@ export default function Sidebar() {
                 <ul className="space-y-2">
                     {favouritesBooks.map((book) => (
                         <li key={book.id} className="p-2 border rounded shadow overflow-ellipsis overflow-hidden text-nowrap">
-                            {book.title} - {book.author}
+                            <Link to={`/books/${book.id}`}>{book.title} - {book.author}</Link>
                         </li>
                     ))}
                 </ul>
@@ -61,7 +62,7 @@ export default function Sidebar() {
                 <ul className="space-y-2">
                     {favouritesAlbums.map((album) => (
                         <li key={album.id} className="p-2 border rounded shadow overflow-ellipsis overflow-hidden text-nowrap">
-                            {album.title} - {album.artist}
+                            <Link to={`/albums/${album.id}`}>{album.title} - {album.artist}</Link>
                         </li>
                     ))}
                 </ul>

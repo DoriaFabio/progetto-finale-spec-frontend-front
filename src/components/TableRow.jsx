@@ -2,8 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom";
 
 //! Componente memoizzato per evitare rendering inutili se le props non cambiano
-const TableRow = React.memo(({ data, path}) => {
-    
+const TableRow = React.memo(({ data, path }) => {
     return (
         <tr>
             {/* Colonna del titolo con effetto hover */}

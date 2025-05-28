@@ -29,8 +29,7 @@ export default function DetailPage() {
             fetchData();
         }
     }, [path, id]);
-
-    const uniqueId = `${id}`;
+    
     const storageKey = `favourites-${path}`;
     const [favourites, setFavourites] = useState(() => {
         const saved = localStorage.getItem(storageKey);
@@ -40,8 +39,8 @@ export default function DetailPage() {
     //! Salvataggio preferiti
     const onSaveClick = () => {
         if (!data) return;
-        if (!favourites.includes(uniqueId)) {
-            const updated = [...favourites, uniqueId];
+        if (!favourites.includes(id)) {
+            const updated = [...favourites, id];
             setFavourites(updated);
             localStorage.setItem(storageKey, JSON.stringify(updated));
             window.dispatchEvent(new Event("favouritesChanged"))
@@ -65,6 +64,24 @@ export default function DetailPage() {
         }
     }
 
+    const storageComp = `comparators-${path}`;
+    const [comparators, setComparators] = useState(() => {
+        const saved = localStorage.getItem(storageComp);
+        return saved ? JSON.parse(saved) : [];
+    })
+
+    //!Aggiunta comparatore
+    const onAddComp = () => {
+        if(!data) return;
+        if(!comparators.includes(id)) {
+            const compUpdate = [...comparators, id];
+            setComparators(compUpdate);
+            localStorage.setItem(storageComp, JSON.stringify(compUpdate));
+            alert("Elemento aggiunto al comparatore");
+        } else {
+            alert("Elemento già presente nel comparatore");
+        }
+    }
 
     return (
         <div className="p-4">
@@ -75,9 +92,13 @@ export default function DetailPage() {
                     className="p-2 shadow-md shadow-gray-400 bg-emerald-700 text-white rounded-xl mt-4 hover:bg-emerald-800 cursor-pointer">
                     Aggiungi ai preferiti
                 </button>
-                <button onClick={() => onDeleteClick(uniqueId)}
+                <button onClick={() => onDeleteClick(id)}
                     className="p-2 shadow-md shadow-gray-400 bg-red-700 text-white rounded-xl mt-4 hover:bg-red-800 cursor-pointer">
                     Rimuovi dai preferiti
+                </button>
+                <button onClick={onAddComp}
+                    className="p-2 shadow-md shadow-gray-400 bg-blue-700 text-white rounded-xl mt-4 hover:bg-blue-800 cursor-pointer">
+                    Aggiungi al comparatore
                 </button>
             </div>
 
