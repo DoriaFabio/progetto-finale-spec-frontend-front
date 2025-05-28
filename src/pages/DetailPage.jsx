@@ -1,7 +1,6 @@
 import { useParams, useLocation } from "react-router-dom";
 import { fetchById } from "../hooks/useTasks";
 import { useState, useEffect, useMemo } from "react";
-import useClick from "../hooks/useClick";
 
 export default function DetailPage() {
     const { id } = useParams();
@@ -33,15 +32,46 @@ export default function DetailPage() {
 
     const uniqueId = `${id}`;
     const storageKey = `favourites-${path}`;
+    const [favourites, setFavourites] = useState(() => {
+        const saved = localStorage.getItem(storageKey);
+        return saved ? JSON.parse(saved) : [];
+    });
 
-    const { onSaveClick, onDeleteClick } = useClick(storageKey, uniqueId, data)
+    //! Salvataggio preferiti
+    const onSaveClick = () => {
+        if (!data) return;
+        if (!favourites.includes(uniqueId)) {
+            const updated = [...favourites, uniqueId];
+            setFavourites(updated);
+            localStorage.setItem(storageKey, JSON.stringify(updated));
+            window.dispatchEvent(new Event("favouritesChanged"))
+            alert("Aggiunto ai preferiti!");
+        } else {
+            alert("Elemento già nei preferiti!");
+        }
+    };
+
+    //!Rimozione preferiti
+    const onDeleteClick = (id) => {
+        if (!data) return;
+        if (favourites.includes(id)) {
+            const updated = favourites.filter((favId) => favId !== id);
+            setFavourites(updated)
+            localStorage.setItem(storageKey, JSON.stringify(updated));
+            window.dispatchEvent(new Event("favouritesChanged"))
+            alert("Elemento eliminato dai preferiti");
+        } else {
+            alert("Elemento non presente tra i preferiti");
+        }
+    }
+
 
     return (
         <div className="p-4">
             <h1 className="text-2xl font-bold mb-2">Dettaglio {contentType} {id}</h1>
             {renderDetails(path, data)}
             <div className="flex justify-center gap-4">
-                <button onClick={() => onSaveClick(uniqueId)}
+                <button onClick={onSaveClick}
                     className="p-2 shadow-md shadow-gray-400 bg-emerald-700 text-white rounded-xl mt-4 hover:bg-emerald-800 cursor-pointer">
                     Aggiungi ai preferiti
                 </button>
