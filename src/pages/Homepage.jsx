@@ -4,15 +4,24 @@ export default function Homepage() {
     return (
         <div className="flex flex-col items-center">
             <h1 className="mt-5 font-bold text-[30px] mb-10">Homepage</h1>
-            <div>
-                <NavLink to="/cinemas" className="mx-1 sm:mx-3 my-2 hover:bg-emerald-700 p-3 rounded-xl text-[13px] sm:text-[16px] transition-all duration-500">
-                    Lista film
+            <div className="flex">
+                <NavLink to="/cinemas" className="group mx-1 sm:mx-3 my-2 relative overflow-hidden shadow-[-10px_5px_26px_rgba(0,0,0,0.25)]">
+                    <img src="./cinema.jpg" alt="cinema" className="w-58 h-auto" />
+                    <div className="absolute inset-0 bg-[#00000067] flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <p className="text-white">Lista film</p>
+                    </div>
                 </NavLink>
-                <NavLink to="/books" className="mx-1 sm:mx-3 my-2 hover:bg-emerald-700 p-3 rounded-xl text-[13px] sm:text-[16px] transition-all duration-500">
-                    Lista libri
+                <NavLink to="/books" className="group mx-1 sm:mx-3 my-2 relative overflow-hidden shadow-[-10px_5px_26px_rgba(0,0,0,0.25)]">
+                    <img src="./libri.jpg" alt="libri" className="w-58 h-auto" />
+                    <div className="absolute inset-0 bg-[#00000067] flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <p className="text-white">Lista libri</p>
+                    </div>
                 </NavLink>
-                <NavLink to="/albums" className="mx-1 sm:mx-3 my-2 hover:bg-emerald-700 p-3 rounded-xl text-[13px] sm:text-[16px] transition-all duration-500">
-                    Lista album
+                <NavLink to="/albums" className="group mx-1 sm:mx-3 my-2 relative overflow-hidden shadow-[-10px_5px_26px_rgba(0,0,0,0.25)]">
+                    <img src="./musica.jpg" alt="album" className="w-58 h-auto" />
+                    <div className="absolute inset-0 bg-[#00000067] flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <p className="text-white">Lista album</p>
+                    </div>
                 </NavLink>
             </div>
         </div>
