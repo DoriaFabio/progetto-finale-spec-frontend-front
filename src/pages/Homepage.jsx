@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom"
 
 export default function Homepage() {
+
     return (
         <div className="flex flex-col items-center">
             <h1 className="mt-5 font-bold text-[30px] mb-10">Homepage</h1>

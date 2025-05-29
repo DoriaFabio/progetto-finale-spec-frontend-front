@@ -7,6 +7,7 @@ export default function Comparator() {
     const [compBooks, setCompBooks] = useState([]);
     const [compAlbums, setCompAlbums] = useState([]);
 
+
     const loadType = async (type, setState) => {
         const saved = localStorage.getItem(`comparators-${type}`);
         const ids = saved ? JSON.parse(saved) : [];

@@ -1,13 +1,13 @@
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { fetchById } from "../hooks/useTasks";
 import { useState, useEffect, useMemo } from "react";
+import { toast } from 'react-toastify';
 
 export default function DetailPage() {
     const { id } = useParams();
     const location = useLocation();
     const path = location.pathname.split("/")[1];
     const navigate = useNavigate();
-
     const contentType = useMemo(() => {
         if (path.includes("cinemas")) return "film";
         if (path.includes("books")) return "libro";
@@ -30,7 +30,7 @@ export default function DetailPage() {
             fetchData();
         }
     }, [path, id]);
-    
+
     const storageKey = `favourites-${path}`;
     const [favourites, setFavourites] = useState(() => {
         const saved = localStorage.getItem(storageKey);
@@ -45,10 +45,10 @@ export default function DetailPage() {
             setFavourites(updated);
             localStorage.setItem(storageKey, JSON.stringify(updated));
             window.dispatchEvent(new Event("favouritesChanged"))
-            alert("Aggiunto ai preferiti!");
             navigate(`/${path}`);
+            toast.success("Elemento aggiunto ai preferiti");
         } else {
-            alert("Elemento già nei preferiti!");
+            toast.warning("Elemento già nei preferiti!");
         }
     };
 
@@ -57,13 +57,13 @@ export default function DetailPage() {
         if (!data) return;
         if (favourites.includes(id)) {
             const updated = favourites.filter((favId) => favId !== id);
-            setFavourites(updated)
+            setFavourites(updated);
             localStorage.setItem(storageKey, JSON.stringify(updated));
-            window.dispatchEvent(new Event("favouritesChanged"))
-            alert("Elemento eliminato dai preferiti");
+            window.dispatchEvent(new Event("favouritesChanged"));
             navigate(`/${path}`);
+            toast.error("Elemento rimosso dai preferiti");
         } else {
-            alert("Elemento non presente tra i preferiti");
+            toast.warning("Elemento non presente tra i preferiti");
         }
     }
 
@@ -75,16 +75,15 @@ export default function DetailPage() {
 
     //!Aggiunta comparatore
     const onAddComp = () => {
-        if(!data) return;
-        if(!comparators.includes(id)) {
+        if (!data) return;
+        if (!comparators.includes(id)) {
             const compUpdate = [...comparators, id];
             setComparators(compUpdate);
             localStorage.setItem(storageComp, JSON.stringify(compUpdate));
-            alert("Elemento aggiunto al comparatore");
+            toast.success("Elemento aggiunto al comparatore");
             navigate("/comparators");
         } else {
-            alert("Elemento già presente nel comparatore");
-            navigate("/comparators");
+            toast.warning("Elemento già presente nel comparatore");
         }
     }
 
@@ -106,7 +105,6 @@ export default function DetailPage() {
                     Aggiungi al comparatore
                 </button>
             </div>
-
         </div>
     );
 }

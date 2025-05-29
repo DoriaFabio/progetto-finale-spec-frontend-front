@@ -7,6 +7,7 @@ import ListAlbum from "./pages/ListAlbum";
 import { GlobalProvider } from "./context/globalContext"
 import DetailPage from "./pages/DetailPage";
 import Comparator from "./pages/Comparator";
+import { ToastContainer } from "react-toastify";
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+      <ToastContainer position="top-right" autoClose={1500} />
     </GlobalProvider>
 
   )
