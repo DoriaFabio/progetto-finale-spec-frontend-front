@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchById } from '../hooks/useTasks';
+import { Link } from "react-router-dom";
 
 export default function Comparator() {
     const [compCinemas, setCompCinemas] = useState([]);
@@ -41,59 +42,69 @@ export default function Comparator() {
             <h1 className='font-bold my-3 text-xl'>Comparatore</h1>
             <h2 className='font-bold text-lg'>Sezione film</h2>
             {compCinemas.length > 0 ? (
-                <ul className='grid grid-cols-3 gap-4'>
+                <div className='grid grid-cols-3 gap-4'>
                     {compCinemas.map((movie) => (
-                        <li key={movie.id} className="p-2 border rounded shadow overflow-ellipsis overflow-hidden text-nowrap">
+                        <div key={movie.id} className="p-3 border rounded shadow overflow-ellipsis overflow-hidden text-nowrap">
                             <p><strong>Titolo:</strong> {movie.title}</p>
                             <p><strong>Regista:</strong> {movie.directory}</p>
                             <p><strong>Anno di uscita:</strong> {movie.release_year}</p>
                             <p><strong>Durata:</strong> {movie.durata} minuti</p>
                             <p><strong>Valutazione:</strong> {movie.rating}</p>
-                            <button className='bg-red-600 text-white p-1 rounded-lg' onClick={() => onDeleteComp("cinemas", movie.id, setCompCinemas)}>
-                                Elimina
-                            </button>
-                        </li>
+                            <div className='flex justify-center gap-3 items-center mt-2'>
+                                <button className='bg-red-600 text-white p-1 rounded-lg' onClick={() => onDeleteComp("cinemas", movie.id, setCompCinemas)}>
+                                    Elimina
+                                </button>
+                                <Link to={`/cinemas/${movie.id}`} className='hover:underline'>Vedi dettaglio</Link>
+                            </div>
+
+                        </div>
                     ))}
-                </ul>
+                </div>
             ) : (
                 <p>Non hai ancora aggiunto film al comparatore</p>
             )}
             <h2 className='font-bold text-lg'>Sezione libri</h2>
             {compBooks.length > 0 ? (
-                <ul className='grid grid-cols-3 gap-4'>
+                <div className='grid grid-cols-3 gap-4'>
                     {compBooks.map((book) => (
-                        <li key={book.id} className="p-2 border rounded shadow overflow-ellipsis overflow-hidden text-nowrap">
+                        <div key={book.id} className="p-3 border rounded shadow overflow-ellipsis overflow-hidden text-nowrap">
                             <p><strong>Titolo:</strong> {book.title}</p>
                             <p><strong>Autore:</strong> {book.author}</p>
                             <p><strong>Anno di uscita:</strong> {book.release_year}</p>
                             <p><strong>N° pagine:</strong> {book.pages}</p>
                             <p><strong>Valutazione:</strong> {book.rating}</p>
-                            <button className='bg-red-600 text-white p-1 rounded-lg' onClick={() => onDeleteComp("books", book.id, setCompBooks)}>
-                                Elimina
-                            </button>
-                        </li>
+                            <div className='flex justify-center gap-3 items-center mt-2'>
+                                <button className='bg-red-600 text-white p-1 rounded-lg' onClick={() => onDeleteComp("books", book.id, setCompBooks)}>
+                                    Elimina
+                                </button>
+                                <Link to={`/books/${book.id}`} className='hover:underline'>Vedi dettaglio</Link>
+                            </div>
+                        </div>
                     ))}
-                </ul>
+                </div>
 
             ) : (
                 <p>Non hai ancora aggiunto libri al comparatore</p>
             )}
             <h2 className='font-bold text-lg'>Sezione album</h2>
             {compAlbums.length > 0 ? (
-                <ul className='grid grid-cols-3 gap-4'>
+                <div className='grid grid-cols-3 gap-4'>
                     {compAlbums.map((album) => (
-                        <li key={album.id} className="p-2 border rounded shadow overflow-ellipsis overflow-hidden text-nowrap">
+                        <div key={album.id} className="p-3 border rounded shadow overflow-ellipsis overflow-hidden text-nowrap">
                             <p><strong>Titolo:</strong> {album.title}</p>
                             <p><strong>Artista:</strong> {album.artist}</p>
                             <p><strong>Anno di uscita:</strong> {album.release_year}</p>
                             <p><strong>N° tracce:</strong> {album.n_tracks}</p>
                             <p> <strong>Valutazione:</strong> {album.rating}</p>
-                            <button className='bg-red-600 text-white p-1 rounded-lg' onClick={() => onDeleteComp("albums", album.id, setCompAlbums)}>
-                                Elimina
-                            </button>
-                        </li>
+                            <div className='flex justify-center gap-3 items-center mt-2'>
+                                <button className='bg-red-600 text-white p-1 rounded-lg' onClick={() => onDeleteComp("albums", album.id, setCompAlbums)}>
+                                    Elimina
+                                </button>
+                                <Link to={`/albums/${album.id}`} className='hover:underline'>Vedi dettaglio</Link>
+                            </div>
+                        </div>
                     ))}
-                </ul>
+                </div>
             ) : (
                 <p>Non hai ancora aggiunto album al comparatore</p>
             )}

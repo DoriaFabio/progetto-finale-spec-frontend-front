@@ -1,4 +1,4 @@
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { fetchById } from "../hooks/useTasks";
 import { useState, useEffect, useMemo } from "react";
 
@@ -6,6 +6,7 @@ export default function DetailPage() {
     const { id } = useParams();
     const location = useLocation();
     const path = location.pathname.split("/")[1];
+    const navigate = useNavigate();
 
     const contentType = useMemo(() => {
         if (path.includes("cinemas")) return "film";
@@ -45,6 +46,7 @@ export default function DetailPage() {
             localStorage.setItem(storageKey, JSON.stringify(updated));
             window.dispatchEvent(new Event("favouritesChanged"))
             alert("Aggiunto ai preferiti!");
+            navigate(`/${path}`);
         } else {
             alert("Elemento già nei preferiti!");
         }
@@ -59,6 +61,7 @@ export default function DetailPage() {
             localStorage.setItem(storageKey, JSON.stringify(updated));
             window.dispatchEvent(new Event("favouritesChanged"))
             alert("Elemento eliminato dai preferiti");
+            navigate(`/${path}`);
         } else {
             alert("Elemento non presente tra i preferiti");
         }
@@ -78,8 +81,10 @@ export default function DetailPage() {
             setComparators(compUpdate);
             localStorage.setItem(storageComp, JSON.stringify(compUpdate));
             alert("Elemento aggiunto al comparatore");
+            navigate("/comparators");
         } else {
             alert("Elemento già presente nel comparatore");
+            navigate("/comparators");
         }
     }
 

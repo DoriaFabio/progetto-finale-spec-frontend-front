@@ -6,8 +6,8 @@ export default function DefaultLayout() {
     return (
         <>
             <Header />
-            <main>
-                <Sidebar />
+            <Sidebar />
+            <main className="pt-[60px]"> 
                 <Outlet />
             </main>
         </>

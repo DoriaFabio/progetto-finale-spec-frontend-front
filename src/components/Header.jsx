@@ -3,7 +3,7 @@ import { FaHouse } from "react-icons/fa6";
 
 export default function Header() {
     return (
-        <header className='bg-emerald-800 text-white h-15 flex justify-items-start items-center'>
+        <header className='bg-emerald-800 text-white h-15 flex justify-items-start items-center fixed top-0 left-0 right-0'>
             <NavLink to="/" className="sm:mx-3 hover:bg-emerald-900 p-3 rounded-xl text-[13px] sm:text-[16px]">
                 <FaHouse className="inline-block" />
             </NavLink>

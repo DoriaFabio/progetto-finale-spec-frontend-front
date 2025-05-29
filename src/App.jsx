@@ -21,7 +21,7 @@ export default function App() {
             <Route path="/cinemas/:id" Component={DetailPage} />
             <Route path="/books/:id" Component={DetailPage} />
             <Route path="/albums/:id" Component={DetailPage} />
-            <Route path="/comparator" Component={Comparator} />
+            <Route path="/comparators" Component={Comparator} />
           </Route>
         </Routes>
       </BrowserRouter>

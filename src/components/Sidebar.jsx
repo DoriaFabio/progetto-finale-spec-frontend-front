@@ -32,7 +32,7 @@ export default function Sidebar() {
     }, []);
 
     return (
-        <div className="p-4 absolute top-0 right-0 bg-[#5b635d8a] h-[calc(100vh-60px)] w-[15%] shadow-[-15px_0px_26px_rgba(0,0,0,0.25)]">
+        <div className="p-4 fixed top-[60px] right-0 bg-[#5b635d8a] h-[calc(100vh-60px)] w-[15%] shadow-[-15px_0px_26px_rgba(0,0,0,0.25)] z-100">
             <h2 className="text-center font-bold text-base my-5">Film preferiti</h2>
             {favouritesCinemas.length > 0 ? (
                 <ul className="space-y-2">
