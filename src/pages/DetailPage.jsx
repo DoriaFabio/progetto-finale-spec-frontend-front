@@ -1,7 +1,8 @@
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { fetchById } from "../hooks/useTasks";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useContext } from "react";
 import { toast } from 'react-toastify';
+import { GlobalContext } from "../context/globalContext";
 
 export default function DetailPage() {
     const { id } = useParams();
@@ -67,25 +68,15 @@ export default function DetailPage() {
         }
     }
 
-    const storageComp = `comparators-${path}`;
-    const [comparators, setComparators] = useState(() => {
-        const saved = localStorage.getItem(storageComp);
-        return saved ? JSON.parse(saved) : [];
-    })
-
-    //!Aggiunta comparatore
-    const onAddComp = () => {
-        if (!data) return;
-        if (!comparators.includes(id)) {
-            const compUpdate = [...comparators, id];
-            setComparators(compUpdate);
-            localStorage.setItem(storageComp, JSON.stringify(compUpdate));
-            toast.success("Elemento aggiunto al comparatore");
-            navigate("/comparators");
-        } else {
-            toast.warning("Elemento già presente nel comparatore");
-        }
-    }
+    const { compData } = useContext(GlobalContext);
+    const { addComp } = compData;
+    const onAddComp = async () => {
+        const item = await fetchById(path, id); // O passalo come prop
+        console.log(item);
+        addComp(path, item);
+        toast.success("Elemento aggiunto al comparatore");
+        navigate("/comparators");
+    };
 
     return (
         <div className="p-4">
@@ -100,7 +91,7 @@ export default function DetailPage() {
                     className="p-2 shadow-md shadow-gray-400 bg-red-700 text-white rounded-xl mt-4 hover:bg-red-800 cursor-pointer">
                     Rimuovi dai preferiti
                 </button>
-                <button onClick={onAddComp}
+                <button onClick={() => onAddComp()}
                     className="p-2 shadow-md shadow-gray-400 bg-blue-700 text-white rounded-xl mt-4 hover:bg-blue-800 cursor-pointer">
                     Aggiungi al comparatore
                 </button>

@@ -6,6 +6,7 @@ export default function useTasks() {
     const [cinemas, setCinemas] = useState([]);
     const [books, setBooks] = useState([]);
 
+
     useEffect(() => {
         Promise.all([
             fetch(`${VITE_API_URL}/albums`).then(res => res.json()),
@@ -19,6 +20,8 @@ export default function useTasks() {
             })
             .catch(err => console.error("Errore nel caricamento dei dati:", err));
     }, []);
+
+
 
     return { albums, cinemas, books }
 }

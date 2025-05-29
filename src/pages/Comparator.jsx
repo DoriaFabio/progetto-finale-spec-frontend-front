@@ -1,42 +1,10 @@
-import { useState, useEffect } from 'react';
-import { fetchById } from '../hooks/useTasks';
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { GlobalContext } from "../context/globalContext";
 
 export default function Comparator() {
-    const [compCinemas, setCompCinemas] = useState([]);
-    const [compBooks, setCompBooks] = useState([]);
-    const [compAlbums, setCompAlbums] = useState([]);
-
-
-    const loadType = async (type, setState) => {
-        const saved = localStorage.getItem(`comparators-${type}`);
-        const ids = saved ? JSON.parse(saved) : [];
-        const results = await Promise.all(ids.map(id => fetchById(type, id)));
-        setState(results);
-    };
-
-    const loadComp = async () => {
-        try {
-            await loadType("cinemas", setCompCinemas);
-            await loadType("albums", setCompAlbums);
-            await loadType("books", setCompBooks);
-        } catch (err) {
-            console.error(err);
-        }
-    };
-
-    useEffect(() => {
-        loadComp();
-    }, []);
-
-    const onDeleteComp = (type, id, setState) => {
-        const key = `comparators-${type}`;
-        const saveLocal = localStorage.getItem(key);
-        const saved = saveLocal ? JSON.parse(saveLocal) : [];
-        const updatedIds = saved.filter(CompId => CompId !== String(id));
-        localStorage.setItem(key, JSON.stringify(updatedIds));
-        setState(prev => prev.filter(item => item.id !== id));
-    };
+    const { compData } = useContext(GlobalContext);
+    const { compCinemas, compBooks, compAlbums, removeComp } = compData;
 
     return (
         <div className="flex flex-col items-center">
@@ -52,7 +20,7 @@ export default function Comparator() {
                             <p><strong>Durata:</strong> {movie.durata} minuti</p>
                             <p><strong>Valutazione:</strong> {movie.rating}</p>
                             <div className='flex justify-center gap-3 items-center mt-2'>
-                                <button className='bg-red-600 text-white p-1 rounded-lg' onClick={() => onDeleteComp("cinemas", movie.id, setCompCinemas)}>
+                                <button className='bg-red-600 text-white p-1 rounded-lg' onClick={() => removeComp("cinemas", movie.id)}>
                                     Elimina
                                 </button>
                                 <Link to={`/cinemas/${movie.id}`} className='hover:underline'>Vedi dettaglio</Link>
@@ -75,7 +43,7 @@ export default function Comparator() {
                             <p><strong>N° pagine:</strong> {book.pages}</p>
                             <p><strong>Valutazione:</strong> {book.rating}</p>
                             <div className='flex justify-center gap-3 items-center mt-2'>
-                                <button className='bg-red-600 text-white p-1 rounded-lg' onClick={() => onDeleteComp("books", book.id, setCompBooks)}>
+                                <button className='bg-red-600 text-white p-1 rounded-lg' onClick={() => removeComp("books", book.id)}>
                                     Elimina
                                 </button>
                                 <Link to={`/books/${book.id}`} className='hover:underline'>Vedi dettaglio</Link>
@@ -98,7 +66,7 @@ export default function Comparator() {
                             <p><strong>N° tracce:</strong> {album.n_tracks}</p>
                             <p> <strong>Valutazione:</strong> {album.rating}</p>
                             <div className='flex justify-center gap-3 items-center mt-2'>
-                                <button className='bg-red-600 text-white p-1 rounded-lg' onClick={() => onDeleteComp("albums", album.id, setCompAlbums)}>
+                                <button className='bg-red-600 text-white p-1 rounded-lg' onClick={() => removeComp("albums", album.id)}>
                                     Elimina
                                 </button>
                                 <Link to={`/albums/${album.id}`} className='hover:underline'>Vedi dettaglio</Link>
