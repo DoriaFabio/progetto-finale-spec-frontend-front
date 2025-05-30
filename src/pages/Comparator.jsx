@@ -13,7 +13,7 @@ export default function Comparator() {
             {compCinemas.length > 0 ? (
                 <div className='grid grid-cols-3 gap-4 my-2'>
                     {compCinemas.map((movie) => (
-                        <div key={movie.id} className="p-3 border rounded shadow overflow-hidden w-[200px]">
+                        <div key={movie.id} className="p-3 border rounded shadow-md overflow-hidden w-[200px]">
                             <p className="truncate"><strong>Titolo:</strong> {movie.title}</p>
                             <p className="truncate"><strong>Regista:</strong> {movie.directory}</p>
                             <p><strong>Anno di uscita:</strong> {movie.release_year}</p>

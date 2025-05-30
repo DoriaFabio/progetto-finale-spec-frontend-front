@@ -79,8 +79,8 @@ export default function DetailPage() {
     };
 
     return (
-        <div className="p-4">
-            <h1 className="text-2xl font-bold mb-2">Dettaglio {contentType} {id}</h1>
+        <div className="p-4 flex flex-col items-center">
+            <h1 className="text-2xl font-bold mb-2">Dettaglio {contentType}</h1>
             {renderDetails(path, data)}
             <div className="flex justify-center gap-4">
                 <button onClick={onSaveClick}
@@ -106,7 +106,8 @@ const renderDetails = (path, data) => {
     switch (path) {
         case "cinemas":
             return (
-                <>
+                <div className="grid grid-cols-2 gap-x-2">
+                    <p><strong>Id: </strong>{data.id}</p>
                     <p><strong>Titolo film: </strong>{data.title}</p>
                     <p><strong>Categoria film: </strong>{data.category}</p>
                     <p><strong>Regista: </strong>{data.directory}</p>
@@ -114,11 +115,13 @@ const renderDetails = (path, data) => {
                     <p><strong>Genere: </strong>{data.genre}</p>
                     <p><strong>Anno d`uscita: </strong>{data.release_year}</p>
                     <p><strong>Valutazione: </strong>{data.rating}</p>
-                </>
+
+                </div>
             );
         case "books":
             return (
-                <>
+                <div className="grid grid-cols-2 gap-x-2">
+                    <p><strong>Id: </strong>{data.id}</p>
                     <p><strong>Titolo libro: </strong>{data.title}</p>
                     <p><strong>Categoria libro: </strong>{data.category}</p>
                     <p><strong>Autore: </strong>{data.author}</p>
@@ -126,11 +129,12 @@ const renderDetails = (path, data) => {
                     <p><strong>Genere: </strong>{data.genre}</p>
                     <p><strong>Anno d`uscita: </strong>{data.release_year}</p>
                     <p><strong>Valutazione: </strong>{data.rating}</p>
-                </>
+                </div>
             );
         case "albums":
             return (
-                <>
+                <div className="grid grid-cols-2 gap-x-2">
+                    <p><strong>Id: </strong>{data.id}</p>
                     <p><strong>Titolo album: </strong>{data.title}</p>
                     <p><strong>Categoria album: </strong>{data.category}</p>
                     <p><strong>Artista: </strong>{data.artist}</p>
@@ -138,7 +142,7 @@ const renderDetails = (path, data) => {
                     <p><strong>Genere: </strong>{data.genre}</p>
                     <p><strong>Anno d`uscita: </strong>{data.release_year}</p>
                     <p><strong>Valutazione: </strong>{data.rating}</p>
-                </>
+                </div>
             );
         default:
             return <p>Dati non disponibili</p>;
