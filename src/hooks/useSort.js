@@ -1,9 +1,13 @@
 import { useState, useCallback } from "react";
 
+//* Hook personalizzato per gestire l'ordinamento di una lista di elementi
 export default function useSort(order) {
+    //? Stato che tiene traccia del campo attualmente usato per l'ordinamento
     const [sortBy, setSortBy] = useState(order);
+    //? Stato che determina la direzione dell'ordinamento: 1 (ascendente) o -1 (discendente)
     const [sortOrder, setSortOrder] = useState(1);
 
+    //* Gestisce il cambio di ordinamento quando l'utente clicca su un'intestazione di colonna.
     const handleOrder = useCallback((c) => {
         if (sortBy === c) {
             setSortOrder((prev) => prev * -1);
@@ -13,6 +17,7 @@ export default function useSort(order) {
         }
     }, [sortBy])
 
+    //* Funzione che ordina gli elementi in base al campo sortBy e alla direzione sortOrder
     const filterSort = useCallback((a,b) => {
         let compare;
         if (sortBy === "title") {

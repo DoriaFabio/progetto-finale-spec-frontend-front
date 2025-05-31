@@ -9,6 +9,7 @@ export default function Comparator() {
     return (
         <div className="flex flex-col items-center">
             <h1 className='font-bold my-1 text-xl'>Comparatore</h1>
+            {/* Sezione comparatore film */}
             <h2 className='font-bold text-lg'>Sezione film</h2>
             {compCinemas.length > 0 ? (
                 <div className='grid grid-cols-3 gap-4 my-2'>
@@ -32,6 +33,7 @@ export default function Comparator() {
             ) : (
                 <p>Non hai ancora aggiunto film al comparatore</p>
             )}
+            {/* Sezione comparatore libri */}
             <h2 className='font-bold text-lg'>Sezione libri</h2>
             {compBooks.length > 0 ? (
                 <div className='grid grid-cols-3 gap-4 my-2'>
@@ -55,6 +57,7 @@ export default function Comparator() {
             ) : (
                 <p>Non hai ancora aggiunto libri al comparatore</p>
             )}
+            {/* Sezione comparatore album */}
             <h2 className='font-bold text-lg'>Sezione album</h2>
             {compAlbums.length > 0 ? (
                 <div className='grid grid-cols-3 gap-4 my-2'>

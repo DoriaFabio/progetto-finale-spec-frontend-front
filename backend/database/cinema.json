@@ -1,0 +1,152 @@
+[
+  {
+    "id": 1,
+    "title": "Inception",
+    "category": "Feature Film",
+    "directory": "Christopher Nolan",
+    "release_year": 2010,
+    "genre": "Science Fiction",
+    "rating": 9,
+    "durata": 148
+  },
+  {
+    "id": 2,
+    "title": "Il palloncino rosso",
+    "category": "Short Film",
+    "directory": "Albert Lamorisse",
+    "release_year": 1956,
+    "genre": "Fantasy",
+    "rating": 7,
+    "durata": 34
+  },
+  {
+    "id": 3,
+    "title": "13th",
+    "category": "Documentary",
+    "directory": "Ava DuVernay",
+    "release_year": 2016,
+    "genre": "Social Justice",
+    "rating": 8,
+    "durata": 100
+  },
+  {
+    "id": 4,
+    "title": "The Irishman",
+    "category": "TV Movie",
+    "directory": "Martin Scorsese",
+    "release_year": 2019,
+    "genre": "Crime Drama",
+    "rating": 6,
+    "durata": 209
+  },
+  {
+    "id": 5,
+    "title": "The Grand Budapest Hotel",
+    "category": "Comedy Film",
+    "directory": "Wes Anderson",
+    "release_year": 2014,
+    "genre": "Comedy",
+    "rating": 8,
+    "durata": 99
+  },
+  {
+    "id": 6,
+    "title": "Tenet",
+    "category": "Action Film",
+    "directory": "Christopher Nolan",
+    "release_year": 2020,
+    "genre": "Action/Thriller",
+    "rating": 5,
+    "durata": 150
+  },
+  {
+    "id": 7,
+    "title": "Si alza il vento",
+    "category": "Animated Film",
+    "directory": "Hayao Miyazaki",
+    "release_year": 2013,
+    "genre": "Animation/Biography",
+    "rating": 8,
+    "durata": 126
+  },
+  {
+    "id": 8,
+    "title": "Parasite",
+    "category": "Feature Film",
+    "directory": "Bong Joon-ho",
+    "release_year": 2019,
+    "genre": "Thriller/Drama",
+    "rating": 9,
+    "durata": 132
+  },
+  {
+    "id": 9,
+    "title": "The Social Dilemma",
+    "category": "Documentary",
+    "directory": "Jeff Orlowski",
+    "release_year": 2020,
+    "genre": "Social Media/Technology",
+    "rating": 6,
+    "durata": 94
+  },
+  {
+    "id": 10,
+    "title": "Il padrino",
+    "category": "Feature Film",
+    "directory": "Francis Ford Coppola",
+    "release_year": 1972,
+    "genre": "Crime/Drama",
+    "rating": 10,
+    "durata": 175
+  },
+  {
+    "id": 11,
+    "title": "The Lego Movie",
+    "category": "Animated Film",
+    "directory": "Phil Lord, Christopher Miller",
+    "release_year": 2014,
+    "genre": "Animation/Adventure",
+    "rating": 6,
+    "durata": 100
+  },
+  {
+    "id": 12,
+    "title": "Citizenfour",
+    "category": "Documentary",
+    "directory": "Laura Poitras",
+    "release_year": 2014,
+    "genre": "Political/Thriller",
+    "rating": 7,
+    "durata": 113
+  },
+  {
+    "id": 13,
+    "title": "La La Land",
+    "category": "Musical Film",
+    "directory": "Damien Chazelle",
+    "release_year": 2016,
+    "genre": "Musical/Drama",
+    "rating": 5,
+    "durata": 128
+  },
+  {
+    "id": 14,
+    "title": "Amélie",
+    "category": "Romantic Film",
+    "directory": "Jean-Pierre Jeunet",
+    "release_year": 2001,
+    "genre": "Romantic Comedy",
+    "rating": 8,
+    "durata": 122
+  },
+  {
+    "id": 15,
+    "title": "Interstellar",
+    "category": "Feature Film",
+    "directory": "Christopher Nolan",
+    "release_year": 2014,
+    "genre": "Science Fiction",
+    "rating": 9,
+    "durata": 169
+  }
+]

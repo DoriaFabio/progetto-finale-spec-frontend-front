@@ -9,6 +9,8 @@ export default function DetailPage() {
     const location = useLocation();
     const path = location.pathname.split("/")[1];
     const navigate = useNavigate();
+
+    //* Determina il tipo di contenuto in modo leggibile per l'interfaccia utente
     const contentType = useMemo(() => {
         if (path.includes("cinemas")) return "film";
         if (path.includes("books")) return "libro";
@@ -18,6 +20,7 @@ export default function DetailPage() {
 
     const [data, setData] = useState(null);
 
+    //* Effettua il fetch dei dati quando path o id cambiano
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -33,6 +36,7 @@ export default function DetailPage() {
     }, [path, id]);
 
     const storageKey = `favourites-${path}`;
+    //* Stato locale per i preferiti (inizializzato leggendo il localStorage)
     const [favourites, setFavourites] = useState(() => {
         const saved = localStorage.getItem(storageKey);
         return saved ? JSON.parse(saved) : [];
@@ -45,7 +49,7 @@ export default function DetailPage() {
             const updated = [...favourites, id];
             setFavourites(updated);
             localStorage.setItem(storageKey, JSON.stringify(updated));
-            window.dispatchEvent(new Event("favouritesChanged"))
+            window.dispatchEvent(new Event("favouritesChanged"));  //? Notifica globale
             navigate(`/${path}`);
             toast.success("Elemento aggiunto ai preferiti");
         } else {
@@ -53,14 +57,14 @@ export default function DetailPage() {
         }
     };
 
-    //!Rimozione preferiti
+    //! Rimozione preferiti
     const onDeleteClick = (id) => {
         if (!data) return;
         if (favourites.includes(id)) {
             const updated = favourites.filter((favId) => favId !== id);
             setFavourites(updated);
             localStorage.setItem(storageKey, JSON.stringify(updated));
-            window.dispatchEvent(new Event("favouritesChanged"));
+            window.dispatchEvent(new Event("favouritesChanged"));  //? Notifica globale
             navigate(`/${path}`);
             toast.error("Elemento rimosso dai preferiti");
         } else {
@@ -68,10 +72,12 @@ export default function DetailPage() {
         }
     }
 
-    const { compData } = useContext(GlobalContext);
+    const { compData } = useContext(GlobalContext);    //? Accesso al comparatore tramite contesto globale
     const { addComp } = compData;
+
+    //* Aggiunta al comparatore
     const onAddComp = async () => {
-        const item = await fetchById(path, id); // O passalo come prop
+        const item = await fetchById(path, id);
         console.log(item);
         addComp(path, item);
         toast.success("Elemento aggiunto al comparatore");
@@ -81,7 +87,8 @@ export default function DetailPage() {
     return (
         <div className="p-4 flex flex-col items-center">
             <h1 className="text-2xl font-bold mb-2">Dettaglio {contentType}</h1>
-            {renderDetails(path, data)}
+            {renderDetails(path, data)} {/* Mostra i dettagli a seconda della categoria */}
+            {/* Pulsanti azione: aggiungi/rimuovi preferiti + comparatore */}
             <div className="flex justify-center gap-4">
                 <button onClick={onSaveClick}
                     className="p-2 shadow-md shadow-gray-400 bg-emerald-700 text-white rounded-xl mt-4 hover:bg-emerald-800 cursor-pointer">
@@ -100,6 +107,7 @@ export default function DetailPage() {
     );
 }
 
+//* Funzione per renderizzare i dettagli a seconda del tipo
 const renderDetails = (path, data) => {
     if (!data) return null;
 

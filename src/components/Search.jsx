@@ -1,15 +1,17 @@
 import { useCallback } from "react";
 
+//! Funzione debounce: limita la frequenza con cui viene chiamata una funzione
 function debounce(callback, delay) {
     let timer;
     return (value) => {
-        clearInterval(timer);
+        clearTimeout(timer);
         timer = setTimeout(() => {
             callback(value);
         }, delay);
     }
 }
 
+//! Componente Search: campo input per la ricerca con debounce
 export default function Search({ onSearch }) {
     const debounceSearch = useCallback(debounce(onSearch, 500), [onSearch]);
     return (
