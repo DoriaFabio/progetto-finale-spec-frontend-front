@@ -3,7 +3,7 @@ const VITE_API_URL = import.meta.env.VITE_API_URL;
 
 //! Hook personalizzato per ottenere i dati iniziali di albums, cinemas e books
 export default function useTasks() {
-    //? Dati per memorizzare i dati delle 3 categorie
+    //? Stati per memorizzare i dati delle 3 categorie
     const [albums, setAlbums] = useState([]);
     const [cinemas, setCinemas] = useState([]);
     const [books, setBooks] = useState([]);

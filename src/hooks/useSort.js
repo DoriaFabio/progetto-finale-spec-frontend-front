@@ -8,14 +8,14 @@ export default function useSort(order) {
     const [sortOrder, setSortOrder] = useState(1);
 
     //* Gestisce il cambio di ordinamento quando l'utente clicca su un'intestazione di colonna.
-    const handleOrder = useCallback((c) => {
+    const handleOrder = (c) => {
         if (sortBy === c) {
             setSortOrder((prev) => prev * -1);
         } else {
             setSortBy(c);
             setSortOrder(1);
         }
-    }, [sortBy])
+    }
 
     //* Funzione che ordina gli elementi in base al campo sortBy e alla direzione sortOrder
     const filterSort = useCallback((a,b) => {
